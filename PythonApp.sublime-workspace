@@ -1,0 +1,240 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "#\n# Licensed to the Apache Software Foundation (ASF) under one or more\n# contributor license agreements.  See the NOTICE file distributed with\n# this work for additional information regarding copyright ownership.\n# The ASF licenses this file to You under the Apache License, Version 2.0\n# (the \"License\"); you may not use this file except in compliance with\n# the License.  You may obtain a copy of the License at\n#\n#    http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n\nfrom __future__ import print_function\n\nimport sys\nfrom operator import add\n\nfrom pyspark.sql import SparkSession\n\n\nif __name__ == \"__main__\":\n    if len(sys.argv) != 2:\n        print(\"Usage: wordcount <file>\", file=sys.stderr)\n        exit(-1)\n\n    spark = SparkSession\\\n        .builder\\\n        .appName(\"PythonWordCount\")\\\n        .getOrCreate()\n\n    lines = spark.read.text(sys.argv[1]).rdd.map(lambda r: r[0])\n    counts = lines.flatMap(lambda x: x.split(' ')) \\\n                  .map(lambda x: (x, 1)) \\\n                  .reduceByKey(add)\n    output = counts.collect()\n    for (word, count) in output:\n        print(\"%s: %i\" % (word, count))\n\n    spark.stop()",
+			"file": "WordCount.py",
+			"file_size": 0,
+			"file_write_time": 131210921906589830,
+			"settings":
+			{
+				"buffer_size": 1452,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Sample.py",
+			"settings":
+			{
+				"buffer_size": 629,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 311.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install Package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/F/ScalaCodeRepo/projects/HadoopApp/src/main/java/com/hadoop/app/WordCountMapper.java",
+		"/F/ScalaCodeRepo/projects/HadoopApp/src/main/java/com/hadoop/app/WordCountReducer.java",
+		"/F/ScalaCodeRepo/projects/HadoopApp/src/main/java/com/hadoop/app/WordCountMapperWithCounter.java",
+		"/F/ScalaCodeRepo/projects/HadoopApp/src/main/java/com/hadoop/app/WordCount.java",
+		"/F/ScalaCodeRepo/projects/HadoopApp/src/test/java/com/hadoop/app/AppTest.java",
+		"/F/ScalaCodeRepo/projects/HadoopApp/src/test/java/com/hadoop/app/WordCountDriverTest.java",
+		"/F/ScalaCodeRepo/projects/HadoopApp/src/test/java/com/hadoop/app/WordCountMRUnitTest.java",
+		"/F/ScalaCodeRepo/projects/HadoopApp/src/main/java/com/hadoop/app/WordCountDriver.java",
+		"/C/Users/sambhav/Documents/Sublime Projects/socket.io/server.js",
+		"/C/Users/sambhav/Documents/Sublime Projects/socket.io/client.html",
+		"/C/Users/sambhav/AppData/Roaming/Sublime Text 2/Packages/AngularMyApp/myFirstAJSapp.html",
+		"/C/Users/sambhav/Documents/Sublime Projects/socket.io/HtmlTest1.html",
+		"/C/Users/sambhav/Documents/Bootstrap/Bootstrap.html",
+		"/C/Users/sambhav/Documents/Sublime Projects/Second.html",
+		"/C/Users/sambhav/Documents/Sublime Projects/Third.html",
+		"/C/Users/sambhav/Documents/Sublime Projects/fourth.html",
+		"/C/Users/sambhav/Documents/Sublime Projects/first.html"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"x",
+			"width:",
+			"width:200px",
+			"float:left;",
+			"0",
+			"width"
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "WordCount.py",
+					"settings":
+					{
+						"buffer_size": 1452,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1452,
+								1452
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 138.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Sample.py",
+					"settings":
+					{
+						"buffer_size": 629,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								628,
+								629
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 297.0,
+	"status_bar_visible": true
+}
